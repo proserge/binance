@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is designed for 3rd party API grabbing and parsing.
 
-Things you may want to cover:
+Based on ruby version 2.5.1 and rails version 5.2.2. Database MySQL 5.7.25.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+HTTParty is used for HTTP requests. Rufus-scheduler is  used for delayed jobs.
