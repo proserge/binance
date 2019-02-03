@@ -1,0 +1,2 @@
+class RequestResult < ApplicationRecord
+end
