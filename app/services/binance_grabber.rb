@@ -1,9 +1,6 @@
 require 'openssl'
 require "base64"
 require 'date'
-##
-#require 'httparty'
- 
  
 class BinanceGrabber
   def initialize
@@ -22,17 +19,16 @@ class BinanceGrabber
     http_code =response.code
     parsed_response = response.parsed_response
      
-    if parsed_response.has_key?["code"]
+    if parsed_response.has_key?("code")
       @error_message = "Got an error from API: error code is #{parsed_response['code']}, error message is #{parsed_response['msg']}"
     end
-     
     case http_code
     when 200
       @status_message = "#{http_code} OK"
-      @new_record = RequestResult.new(parsed_response)
-      @last_record = RequestResult.last_record
-      if @last_record["updateTime"] < @new_record["updateTime"]
-        if @body.save
+      @new_record = RequestResult.new(raw_data: parsed_response)
+      @last_record = RequestResult.last 
+      if @last_record == nil || @last_record["updateTime"].to_i < @new_record["updateTime"].to_i
+        if @new_record.save
           puts 'Record is added'
         else
           puts 'The error was occured while saving to database!'

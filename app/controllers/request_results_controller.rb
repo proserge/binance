@@ -1,5 +1,11 @@
 class RequestResultsController < ApplicationController
-  def show
-    request_result = BinanceGrabber.call
+  
+  def binance_grab
+    BinanceGrabber.new.call
   end
+
+  def binance_parse
+    BinanceParser.new.call
+  end
+
 end
